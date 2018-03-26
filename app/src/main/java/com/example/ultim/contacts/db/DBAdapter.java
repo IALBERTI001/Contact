@@ -100,7 +100,7 @@ public class DBAdapter  {
 
     //--retrieves a particular contact
     public Cursor getContact(long rowID){
-        Cursor mCursor = db.query(true, DATABASE_TABLE, new String[]{KEY_ROWID, KEY_ROWID, KEY_NAME, KEY_EMAIL, KEY_PHONE}, KEY_ROWID + "="
+        Cursor mCursor = db.query(true, DATABASE_TABLE, new String[]{KEY_ROWID, KEY_NAME, KEY_EMAIL, KEY_PHONE}, KEY_ROWID + "="
                 + rowID, null, null, null, null, null);
         if(mCursor != null){
             mCursor.moveToFirst();
@@ -116,6 +116,13 @@ public class DBAdapter  {
         return db.update(DATABASE_TABLE, args, KEY_ROWID + "=" + rowID, null ) > 0;
     }
 
-
+    @Override
+    public String toString() {
+        return "DBAdapter{" +
+                "context=" + context +
+                ", DBHelper=" + DBHelper +
+                ", db=" + db +
+                '}';
+    }
 }
 
