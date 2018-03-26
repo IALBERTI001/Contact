@@ -1,0 +1,35 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.ultim.contacts.views.LandingScreenFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/b_dialer"
+            android:layout_width="95dp"
+            android:layout_height="89dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="31dp"
+            android:background="@android:drawable/stat_sys_phone_call"
+            android:backgroundTint="@color/colorPrimary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/b_contacts"
+            android:layout_width="105dp"
+            android:layout_height="89dp"
+            android:background="@android:drawable/sym_contact_card"
+            android:backgroundTint="@color/colorPrimary"
+            app:layout_constraintBaseline_toBaselineOf="@+id/b_dialer"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+    </android.support.constraint.ConstraintLayout>
+</FrameLayout>

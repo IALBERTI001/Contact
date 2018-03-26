@@ -1,4 +1,4 @@
-package com.example.ultim.contacts;
+package com.example.ultim.contacts.views;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,10 +11,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.util.EmptyStackException;
+import com.example.ultim.contacts.R;
 
 
-public class passwordScreenFragment extends Fragment {
+public class PasswordScreenFragment extends Fragment {
     String username = "Admin";
     String password = "password";
 
@@ -33,6 +33,7 @@ public class passwordScreenFragment extends Fragment {
         final EditText myUsername = (EditText) rootView.findViewById(R.id.username);
         final EditText myPassword = (EditText) rootView.findViewById(R.id.password);
 
+        //--on click listner for the login button
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -60,7 +61,7 @@ public class passwordScreenFragment extends Fragment {
                         //start transaction
                         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                         //fragment used
-                        dialerFragment dFragment = new dialerFragment();
+                        ContactsListFragment dFragment = new ContactsListFragment();
                         //saving bundle to fragment
                         dFragment.setArguments(bundle);
 

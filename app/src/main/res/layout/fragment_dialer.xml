@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.ultim.contacts.dialerFragment">
+    tools:context="com.example.ultim.contacts.views.DialerFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -141,10 +141,39 @@
             android:layout_marginEnd="31dp"
             android:layout_marginStart="31dp"
             android:layout_marginTop="41dp"
+            android:textAlignment="center"
+            android:textSize="30sp"
             app:layout_constraintBottom_toTopOf="@+id/button1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="28dp"
+            android:background="@android:color/holo_blue_bright"
+            android:text="Add"
+            app:layout_constraintBottom_toBottomOf="@+id/button10"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/button10"
+            app:layout_constraintVertical_bias="0.0"
+            tools:background="@android:color/holo_blue_bright" />
+
+        <Button
+            android:id="@+id/button_contacts_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp"
+            android:layout_marginLeft="16dp"
+            android:background="@android:color/holo_blue_bright"
+            android:text="Contacts List"
+            app:layout_constraintBottom_toBottomOf="@+id/button10"
+            app:layout_constraintEnd_toStartOf="@+id/button10"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/button10"
+            app:layout_constraintVertical_bias="1.0" />
 
     </android.support.constraint.ConstraintLayout>
 </FrameLayout>
