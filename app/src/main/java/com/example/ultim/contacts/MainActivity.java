@@ -8,6 +8,7 @@ import android.text.Editable;
 import android.widget.Toast;
 
 import com.example.ultim.contacts.db.DBAdapter;
+import com.example.ultim.contacts.views.DialerFragment;
 import com.example.ultim.contacts.views.LandingScreenFragment;
 
 public class MainActivity extends AppCompatActivity {
@@ -29,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         //Fragment Transaction
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         //what am i adding
-        LandingScreenFragment dialer = new LandingScreenFragment();
+        DialerFragment dialer = new DialerFragment();
         //where am I adding it
         fragmentTransaction.add(R.id.fragmentContainer, dialer, "password_fragment" );
         //Do it!
