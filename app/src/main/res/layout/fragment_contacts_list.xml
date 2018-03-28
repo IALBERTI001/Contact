@@ -54,18 +54,21 @@
             android:id="@+id/b_next"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
             android:text="next contact" />
 
         <Button
             android:id="@+id/b_previous"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
             android:text="previous contact" />
 
         <Button
             android:id="@+id/b_delete"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
             android:text="delete" />
     </LinearLayout>
 </FrameLayout>
