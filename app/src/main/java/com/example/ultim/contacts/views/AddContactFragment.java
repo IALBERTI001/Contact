@@ -64,7 +64,7 @@ public class AddContactFragment extends Fragment {
                 //go back to main screen
                 FragmentManager fragmentManager = getFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                LandingScreenFragment landingScreenFragment = new LandingScreenFragment();
+                DialerFragment landingScreenFragment = new DialerFragment();
                 fragmentTransaction.replace(R.id.fragmentContainer, landingScreenFragment, "back_to_landing").commit();
 
             }

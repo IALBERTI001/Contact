@@ -13,7 +13,7 @@
         android:layout_height="120dp"
         android:cropToPadding="false"
         android:scaleType="centerCrop"
-        android:src="@drawable/page_21"
+        android:src="@drawable/header"
         app:layout_constraintBottom_toTopOf="@+id/fragmentContainer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

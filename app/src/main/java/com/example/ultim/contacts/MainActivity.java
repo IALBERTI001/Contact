@@ -9,7 +9,6 @@ import android.widget.Toast;
 
 import com.example.ultim.contacts.db.DBAdapter;
 import com.example.ultim.contacts.views.DialerFragment;
-import com.example.ultim.contacts.views.LandingScreenFragment;
 
 public class MainActivity extends AppCompatActivity {
 

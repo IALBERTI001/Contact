@@ -3,9 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Contact.iml" filepath="$PROJECT_DIR$/.idea/Contact.iml" />
-      <module fileurl="file://C:\Users\Entec01.N331816-3111\AndroidStudioProjects\Contact\Contacts.iml" filepath="C:\Users\Entec01.N331816-3111\AndroidStudioProjects\Contact\Contacts.iml" />
+      <module fileurl="file://C:/Users/Entec01.N331816-3111/AndroidStudioProjects/Contact/Contacts.iml" filepath="C:/Users/Entec01.N331816-3111/AndroidStudioProjects/Contact/Contacts.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://C:\Users\Entec01.N331816-3111\AndroidStudioProjects\Contact\app\app.iml" filepath="C:\Users\Entec01.N331816-3111\AndroidStudioProjects\Contact\app\app.iml" />
+      <module fileurl="file://C:/Users/Entec01.N331816-3111/AndroidStudioProjects/Contact/app/app.iml" filepath="C:/Users/Entec01.N331816-3111/AndroidStudioProjects/Contact/app/app.iml" />
     </modules>
   </component>
 </project>

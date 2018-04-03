@@ -21,7 +21,12 @@ import com.example.ultim.contacts.db.DBAdapter;
  * A simple {@link Fragment} subclass.
  */
 public class ContactsListFragment extends Fragment {
-    int index = 1;
+    private int index = 0;
+    private int previousIndex = 0;
+    private int placeHolder = 0;
+
+
+
 
 
     private final String TAG = "Contact List Fragment:";
@@ -50,29 +55,19 @@ public class ContactsListFragment extends Fragment {
 
         //autofill the first contact in the database
         //TODO: check the limit of the db??
-        DBAdapter db = new DBAdapter(context);
+        DBAdapter db = new DBAdapter(getContext());
         db.open();
-        Cursor c = db.getContact(1);
-        if(c.moveToFirst()) {
+        Cursor c = db.getAllCOntacts();
+        //--move to first contact
+        c.moveToFirst();
+        //--get the position
+        index = c.getPosition();
+        Toast.makeText(getContext(), "You are on contact: " + index, Toast.LENGTH_SHORT).show();
+        name.setText(c.getString(1));
+        email.setText(c.getString(2));
+        phone.setText(c.getString(3));
 
-
-            //--retrieving the strings from the 3 columns of my database (1. name, 2. email, 3.phone number)
-            String dbName = c.getString(1);
-            String dbEmail = c.getString(2);
-            String dbPhone = c.getString(3);
-
-            //--setting the textviews to the information from the database
-            name.setText(dbName);
-            email.setText(dbEmail);
-            phone.setText(dbPhone);
-
-            //--send the index + 1 to prep for next button press.
-            //--close db connection to be used again elsewhere
-            db.close();
-        }else{
-            Toast.makeText(context, "No contact found", Toast.LENGTH_SHORT).show();
-
-        }
+        db.close();
 
 
 
@@ -80,42 +75,19 @@ public class ContactsListFragment extends Fragment {
             next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               //TODO: set the next item on DB on the screen
-                try {
-                    DBAdapter db = new DBAdapter(context);
-
-                    //open db to get transaction
+                if(!c.isLast()) {
                     db.open();
-                    //gets data at the current index
-                    index++;
-                    Cursor c = db.getContact(index);
-                    if(c.moveToFirst()){
-                        //--retrieving the strings from the 3 columns of my database (1. name, 2. email, 3.phone number)
-                        String dbName = c.getString(1);
-                        String dbEmail = c.getString(2);
-                        String dbPhone = c.getString(3);
-
-                        //--setting the textviews to the information from the database
-                        name.setText(dbName);
-                        email.setText(dbEmail);
-                        phone.setText(dbPhone);
-
-                        //--send the index + 1 to prep for next button press.
-
-                        //--close db connection to be used again elsewhere
-                        db.close();
-
-                    }else{
-                        Toast.makeText(context, "You are at the last contact!", Toast.LENGTH_SHORT).show();
-
-                    }
-
-
-                }catch(SQLException e){
-                    Log.e(TAG, "Error in getting next contact" );
-                    e.printStackTrace();
+                    c.moveToNext();
+                    index = c.getPosition();
+                    Toast.makeText(getContext(), "You are on contact: " + index, Toast.LENGTH_SHORT).show();
+                    db.getContact(index);
+                    name.setText(c.getString(1));
+                    email.setText(c.getString(2));
+                    phone.setText(c.getString(3));
+                    db.close();
+                }else{
+                    Toast.makeText(getContext(), "You are at the last contact", Toast.LENGTH_SHORT).show();
                 }
-
 
 
             }
@@ -125,16 +97,15 @@ public class ContactsListFragment extends Fragment {
 
             @Override
             public void onClick(View view) {
-                try {
-                    DBAdapter db = new DBAdapter(context);
-
-                    db.open();
-                    db.deleteContact(index);
-                    db.close();
-                }catch(SQLException e){
-                    Log.e(TAG, "onClick: Error in deleteing current index" );
-                    e.printStackTrace();
-                }
+                db.open();
+                db.deleteContact(index);
+                c.moveToFirst();
+                index = c.getPosition();
+                Toast.makeText(getContext(), "Contact Deleted", Toast.LENGTH_SHORT).show();
+                name.setText(c.getString(1));
+                email.setText(c.getString(2));
+                phone.setText(c.getString(3));
+                db.close();
 
             }
         });
@@ -142,31 +113,21 @@ public class ContactsListFragment extends Fragment {
         previous.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                try {
-
-                    DBAdapter db = new DBAdapter(context);
-                    db.open();
-                    index--;
-                    Cursor c = db.getContact(index);
-                    if(c.moveToFirst()) {
-
-                        String dbName = c.getString(1);
-                        String dbEmail = c.getString(2);
-                        String dbPhone = c.getString(3);
-
-                        name.setText(dbName);
-                        email.setText(dbEmail);
-                        phone.setText(dbPhone);
-                    }else{
-                        Toast.makeText(context, "You are at the first contact!", Toast.LENGTH_SHORT).show();
-                    }
-
-
+                db.open();
+                if(!c.isFirst()) {
+                    c.moveToPrevious();
+                    index = c.getPosition();
+                    Toast.makeText(getContext(), "You are on contact: " + index, Toast.LENGTH_SHORT).show();
+                    db.getContact(index);
+                    name.setText(c.getString(1));
+                    email.setText(c.getString(2));
+                    phone.setText(c.getString(3));
                     db.close();
-                }catch(SQLException e){
-                    Log.e(TAG, "onClick: Error getting the previous contact" );
-                    e.printStackTrace();
+                }else{
+                    Toast.makeText(getContext(), "You are at first ID", Toast.LENGTH_SHORT).show();
                 }
+
+
 
 
             }
@@ -176,5 +137,13 @@ public class ContactsListFragment extends Fragment {
         // Inflate the layout for this fragment
         return v;
     }
+
+    public void setTextField(Cursor c, TextView v, int pos){
+        v.setText(c.getString(pos));
+
+    }
+
+
+
 
 }

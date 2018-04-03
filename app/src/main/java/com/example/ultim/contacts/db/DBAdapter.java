@@ -79,6 +79,8 @@ public class DBAdapter  {
         DBHelper.close();
     }
 
+
+
     //--insert a contact to database
     public long insertContact(String name, String email, String phone){
         ContentValues initialValues = new ContentValues();

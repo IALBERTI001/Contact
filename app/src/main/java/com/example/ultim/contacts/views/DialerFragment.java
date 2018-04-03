@@ -38,7 +38,7 @@ public class DialerFragment extends Fragment {
         Button four = (Button) v.findViewById(R.id.button4);
         Button five = (Button) v.findViewById(R.id.button5);
         Button six = (Button) v.findViewById(R.id.button6);
-        Button seven = (Button) v.findViewById(R.id.button7);
+        Button seven =(Button) v.findViewById(R.id.button7);
         Button eight = (Button) v.findViewById(R.id.button8);
         Button nine = (Button) v.findViewById(R.id.button9);
 
@@ -144,7 +144,7 @@ public class DialerFragment extends Fragment {
                 //start transaction
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 //fragment used
-                PasswordScreenFragment dFragment = new PasswordScreenFragment();
+                ContactsListFragment dFragment = new ContactsListFragment();
 
                 //replace current fragment with this fragment
                 fragmentTransaction.replace(R.id.fragmentContainer, dFragment, "Add_fragment_call").commit();
