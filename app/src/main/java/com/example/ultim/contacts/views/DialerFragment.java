@@ -27,6 +27,8 @@ public class DialerFragment extends Fragment {
             Toast.makeText(getContext(), "Welcome " + user + ", this is the username passed from password fragment", Toast.LENGTH_LONG).show();
         }
 
+        Button Text_button = (Button) v.findViewById(R.id.button_text);
+
         TextView dialer = (TextView) v.findViewById(R.id.dialer_screen);
         Button contacts = (Button) v.findViewById(R.id.button_contacts_list);
 
@@ -41,6 +43,20 @@ public class DialerFragment extends Fragment {
         Button seven =(Button) v.findViewById(R.id.button7);
         Button eight = (Button) v.findViewById(R.id.button8);
         Button nine = (Button) v.findViewById(R.id.button9);
+
+        /**Texting button listener
+         *
+         */
+        Text_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                TextingFragment textingFragment = new TextingFragment();
+                fragmentTransaction.replace(R.id.fragmentContainer, textingFragment, "texting").commit();
+            }
+        });
+
 
         /**
          * LISTENERS FOR THE DIALER BUTTONS
