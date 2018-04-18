@@ -92,6 +92,7 @@ public class DBAdapter  {
 
     //--deletes a particular contact--
     public boolean deleteContact(long rowID){
+
         return db.delete(DATABASE_TABLE, KEY_ROWID + "=" + rowID, null) > 0;
     }
 
@@ -116,6 +117,13 @@ public class DBAdapter  {
         args.put(KEY_EMAIL, email);
         args.put(KEY_NAME, name);
         return db.update(DATABASE_TABLE, args, KEY_ROWID + "=" + rowID, null ) > 0;
+    }
+
+    //--refresh the database--
+    public boolean refresh(){
+
+
+        return true;
     }
 
     @Override

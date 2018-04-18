@@ -5,12 +5,15 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Telephony;
+import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
 import android.telephony.SmsManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.ultim.contacts.R;
 
@@ -24,18 +27,29 @@ public class TextingFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_texting, container, false);
-
+        EditText text = (EditText) v.findViewById(R.id.textInfo);
         Button send = (Button) v.findViewById(R.id.button_send);
         Button bDefault = (Button) v.findViewById(R.id.button_default);
         Button email = (Button) v.findViewById(R.id.button_email);
+
+
 
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 SmsManager sms = SmsManager.getDefault();
-                sms.sendTextMessage("5554", null, "is this working?", null, null);
+                String textToSend = text.getText().toString();
+                if(text.getText().toString().equals(null)){
+                    Toast.makeText(getContext(), "Nothing to send!", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(getContext(), "Text" + textToSend, Toast.LENGTH_SHORT).show();
+                    sms.sendTextMessage("5554", null, textToSend, null, null);
+                }
+
             }
         });
+
+
 
         bDefault.setOnClickListener(new View.OnClickListener() {
             @Override

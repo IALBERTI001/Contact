@@ -23,14 +23,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        //--
         super.onCreate(savedInstanceState);
 
-        //--
         setContentView(R.layout.activity_main);
 
-        //--
 
+        //--LOAD UP FIRST FRAGMENT--
 
         //Fragment manager support
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -39,10 +37,11 @@ public class MainActivity extends AppCompatActivity {
         //what am i adding
         DialerFragment dialer = new DialerFragment();
         //where am I adding it
-        fragmentTransaction.add(R.id.fragmentContainer, dialer, "password_fragment" );
+        fragmentTransaction.replace(R.id.fragmentContainer, dialer, "password_fragment" );
         //Do it!
         fragmentTransaction.commit();
 
+        //--used to get permission when sending and receiving a text
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS)!= PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.SEND_SMS}, REQUEST_SEND_SMS);
         }
@@ -86,5 +85,27 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onBackPressed() {
 
+        int count = getFragmentManager().getBackStackEntryCount();
+
+        if (count == 0) {
+
+            //--what to do on back pressed
+            //Fragment manager support
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            //Fragment Transaction
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            //what am i adding
+            DialerFragment dialer = new DialerFragment();
+            //where am I adding it
+            fragmentTransaction.replace(R.id.fragmentContainer, dialer, "password_fragment" );
+            //Do it!
+            fragmentTransaction.commit();
+        } else {
+            getFragmentManager().popBackStack();
+        }
+
+    }
 }

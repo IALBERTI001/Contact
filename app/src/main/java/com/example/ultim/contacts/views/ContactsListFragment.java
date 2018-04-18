@@ -21,6 +21,7 @@ import com.example.ultim.contacts.db.DBAdapter;
  * A simple {@link Fragment} subclass.
  */
 public class ContactsListFragment extends Fragment {
+
     private int index = 0;
     private int previousIndex = 0;
     private int placeHolder = 0;
@@ -59,13 +60,20 @@ public class ContactsListFragment extends Fragment {
         db.open();
         Cursor c = db.getAllCOntacts();
         //--move to first contact
-        c.moveToFirst();
-        //--get the position
-        index = c.getPosition();
-        Toast.makeText(getContext(), "You are on contact: " + index, Toast.LENGTH_SHORT).show();
-        name.setText(c.getString(1));
-        email.setText(c.getString(2));
-        phone.setText(c.getString(3));
+        if(c.moveToFirst()){
+            index = c.getPosition();
+            Toast.makeText(getContext(), "You are on contact: " + index, Toast.LENGTH_SHORT).show();
+            name.setText(c.getString(1));
+            email.setText(c.getString(2));
+            phone.setText(c.getString(3));
+        }else{
+            name.setText("no contact available");
+            email.setText("no email to show");
+            phone.setText("no number to show");
+
+        }
+
+
 
         db.close();
 
@@ -75,19 +83,23 @@ public class ContactsListFragment extends Fragment {
             next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!c.isLast()) {
-                    db.open();
-                    c.moveToNext();
-                    index = c.getPosition();
-                    Toast.makeText(getContext(), "You are on contact: " + index, Toast.LENGTH_SHORT).show();
-                    db.getContact(index);
-                    name.setText(c.getString(1));
-                    email.setText(c.getString(2));
-                    phone.setText(c.getString(3));
-                    db.close();
-                }else{
-                    Toast.makeText(getContext(), "You are at the last contact", Toast.LENGTH_SHORT).show();
+                if(c.moveToFirst()){
+                    if(!c.isLast()) {
+                        db.open();
+                        c.moveToNext();
+                        index = c.getPosition();
+                        Toast.makeText(getContext(), "You are on contact: " + index, Toast.LENGTH_SHORT).show();
+                        db.getContact(index);
+                        name.setText(c.getString(1));
+                        email.setText(c.getString(2));
+                        phone.setText(c.getString(3));
+                        db.close();
+                    }else{
+                        Toast.makeText(getContext(), "You are at the last contact", Toast.LENGTH_SHORT).show();
+                    }
+
                 }
+
 
 
             }
@@ -97,15 +109,24 @@ public class ContactsListFragment extends Fragment {
 
             @Override
             public void onClick(View view) {
-                db.open();
-                db.deleteContact(index);
-                c.moveToFirst();
-                index = c.getPosition();
-                Toast.makeText(getContext(), "Contact Deleted", Toast.LENGTH_SHORT).show();
-                name.setText(c.getString(1));
-                email.setText(c.getString(2));
-                phone.setText(c.getString(3));
-                db.close();
+                if(c.moveToFirst()){
+                    //--delete the contact
+                    db.open();
+                    int deleteIndex = Integer.parseInt(c.getString(0));
+                    Toast.makeText(getContext(), "Contact Deleted at index " + deleteIndex, Toast.LENGTH_SHORT).show();
+                    db.deleteContact(deleteIndex);
+                    db.close();
+
+                    //--how do I refresh the DB??
+
+                    Toast.makeText(getContext(), "Contact Deleted", Toast.LENGTH_SHORT).show();
+
+                    name.setText(null);
+                    email.setText(null);
+                    phone.setText(null);
+                }
+
+
 
             }
         });
@@ -114,21 +135,21 @@ public class ContactsListFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 db.open();
-                if(!c.isFirst()) {
-                    c.moveToPrevious();
-                    index = c.getPosition();
-                    Toast.makeText(getContext(), "You are on contact: " + index, Toast.LENGTH_SHORT).show();
-                    db.getContact(index);
-                    name.setText(c.getString(1));
-                    email.setText(c.getString(2));
-                    phone.setText(c.getString(3));
-                    db.close();
-                }else{
-                    Toast.makeText(getContext(), "You are at first ID", Toast.LENGTH_SHORT).show();
+                if(c.moveToFirst()){
+                    if(!c.isFirst()) {
+                        c.moveToPrevious();
+                        index = c.getPosition();
+                        Toast.makeText(getContext(), "You are on contact: " + index, Toast.LENGTH_SHORT).show();
+                        db.getContact(index);
+                        name.setText(c.getString(1));
+                        email.setText(c.getString(2));
+                        phone.setText(c.getString(3));
+
+                    }else{
+                        Toast.makeText(getContext(), "You are at first ID", Toast.LENGTH_SHORT).show();
+                    }
                 }
-
-
-
+                db.close();
 
             }
         });
@@ -138,10 +159,7 @@ public class ContactsListFragment extends Fragment {
         return v;
     }
 
-    public void setTextField(Cursor c, TextView v, int pos){
-        v.setText(c.getString(pos));
 
-    }
 
 
 

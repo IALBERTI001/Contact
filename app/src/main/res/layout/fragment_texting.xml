@@ -21,8 +21,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="open sms app" />
+
         <EditText
-            android:id="@+id/textField"
+            android:id="@+id/textInfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"

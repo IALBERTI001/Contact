@@ -15,12 +15,14 @@
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:text="NAME" />
 
         <TextView
             android:id="@+id/txt_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:text="Name"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
@@ -28,12 +30,14 @@
             android:id="@+id/textView3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:text="EMAIL" />
 
         <TextView
             android:id="@+id/txt_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:text="@string/prompt_email"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
@@ -41,12 +45,14 @@
             android:id="@+id/textView6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:text="PHONE" />
 
         <TextView
             android:id="@+id/txt_phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:text="@android:string/emptyPhoneNumber"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
