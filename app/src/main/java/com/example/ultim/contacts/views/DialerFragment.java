@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ultim.contacts.R;
+
+import org.w3c.dom.Text;
+
+import static android.content.ContentValues.TAG;
 
 
 public class DialerFragment extends Fragment {
@@ -171,6 +176,14 @@ public class DialerFragment extends Fragment {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                Log.i(TAG, "onClick: Creating the textview");
+                String phone_number = dialer.getText().toString();
+                Log.i(TAG, "onClick: the text added to bundle will be " + phone_number);
+                Bundle b = new Bundle();
+                b.putString("phone", phone_number );
+
+
                 //--transaction manager
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 //start transaction

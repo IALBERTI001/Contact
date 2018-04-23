@@ -34,10 +34,18 @@ public class AddContactFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_add_contact, container, false);
         // Inflate the layout for this fragment
 
+
         Button addToDB = (Button) v.findViewById(R.id.button_database);
         EditText name = (EditText) v.findViewById(R.id.et_name);
         EditText email = (EditText) v.findViewById(R.id.et_email);
-        EditText phone = (EditText) v.findViewById(R.id.et_phone);
+        EditText phoneN = (EditText) v.findViewById(R.id.et_phone);
+
+        Bundle bundle = this.getArguments();
+        if(bundle != null){
+            Log.e(TAG, "onCreateView: Getting the bundle ", null );
+            String number = bundle.getString("phone");
+            phoneN.setText(number);
+        }
 
         addToDB.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,7 +57,7 @@ public class AddContactFragment extends Fragment {
 
                 String iName = name.getText().toString();
                 String iEmail = email.getText().toString();
-                String iPhone = phone.getText().toString();
+                String iPhone = phoneN.getText().toString();
 
 
                 DBAdapter db = new DBAdapter(myContext);
