@@ -26,11 +26,7 @@ public class DialerFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_dialer, container, false);
 
         //getting data from the password screen fragment then displaying it in a toast
-        Bundle bundle = getArguments();
-        if(bundle != null){
-            String user = bundle.getString("username");
-            Toast.makeText(getContext(), "Welcome " + user + ", this is the username passed from password fragment", Toast.LENGTH_LONG).show();
-        }
+
 
         Button Text_button = (Button) v.findViewById(R.id.button_text);
 
@@ -180,8 +176,11 @@ public class DialerFragment extends Fragment {
                 Log.i(TAG, "onClick: Creating the textview");
                 String phone_number = dialer.getText().toString();
                 Log.i(TAG, "onClick: the text added to bundle will be " + phone_number);
-                Bundle b = new Bundle();
-                b.putString("phone", phone_number );
+                Bundle args = new Bundle();
+                args.putString("phone", phone_number);
+                Log.e(TAG, "onClick: Bundle created with phone-number" + phone_number, null);
+                Toast.makeText(getContext(), "Phone number added", Toast.LENGTH_SHORT).show();
+
 
 
                 //--transaction manager
@@ -190,6 +189,7 @@ public class DialerFragment extends Fragment {
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 //fragment used
                 AddContactFragment dFragment = new AddContactFragment();
+                dFragment.setArguments(args);
                 //replace current fragment with this fragment
                 fragmentTransaction.replace(R.id.fragmentContainer, dFragment, "Add_fragment_call").commit();
             }

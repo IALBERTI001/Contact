@@ -41,6 +41,8 @@ public class AddContactFragment extends Fragment {
         EditText phoneN = (EditText) v.findViewById(R.id.et_phone);
 
         Bundle bundle = this.getArguments();
+        Log.i(TAG, "onCreateView: Getting arguments from bundle");
+
         if(bundle != null){
             Log.e(TAG, "onCreateView: Getting the bundle ", null );
             String number = bundle.getString("phone");

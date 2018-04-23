@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/background_dark"
     tools:context="com.example.ultim.contacts.views.DialerFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -22,11 +23,13 @@
             android:layout_marginRight="8dp"
             android:layout_marginStart="8dp"
             android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:textColor="@android:color/holo_blue_bright" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="85dp"
+            android:gravity="center_horizontal|center"
             android:orientation="horizontal">
 
             <Button
@@ -38,9 +41,11 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
-                android:layout_weight="1"
-                android:text="1"
-                android:textSize="30sp" />
+                android:background="@drawable/ic_n1"
+                android:elevation="0dp"
+                android:fadingEdge="none"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+                android:textColorHighlight="@android:color/background_light" />
 
             <Button
                 android:id="@+id/button2"
@@ -51,8 +56,7 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
-                android:layout_weight="1"
-                android:text="2"
+                android:background="@drawable/ic_2"
                 android:textSize="30sp" />
 
             <Button
@@ -64,15 +68,15 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
-                android:layout_weight="1"
-                android:text="3"
+                android:background="@drawable/ic_3"
                 android:textSize="30sp" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="85dp"
+            android:gravity="center_horizontal|center"
             android:orientation="horizontal">
 
             <Button
@@ -84,8 +88,7 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
-                android:layout_weight="1"
-                android:text="4"
+                android:background="@drawable/ic_4"
                 android:textSize="30sp" />
 
             <Button
@@ -97,7 +100,7 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
-                android:text="5"
+                android:background="@drawable/ic_5"
                 android:textSize="30sp" />
 
             <Button
@@ -109,74 +112,70 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
-                android:layout_weight="1"
-                android:text="6"
+                android:background="@drawable/ic_6"
                 android:textSize="30sp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="83dp"
             android:gravity="center_horizontal|center"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/button7"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="68dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
-                android:layout_weight="1"
-                android:text="7"
+                android:background="@drawable/ic_7"
                 android:textSize="30sp" />
 
             <Button
                 android:id="@+id/button8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="85dp"
+                android:layout_height="69dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
-                android:layout_weight="1"
-                android:text="8"
+                android:background="@drawable/ic_8"
                 android:textSize="30sp" />
 
             <Button
                 android:id="@+id/button9"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="84dp"
+                android:layout_height="72dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
-                android:layout_weight="1"
-                android:text="9"
+                android:background="@drawable/ic_9"
                 android:textSize="30sp" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="85dp"
+            android:gravity="center_horizontal|center"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/button_add"
-                android:layout_width="wrap_content"
+                android:layout_width="104dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
-                android:layout_weight="1"
-                android:text="ADD" />
+                android:background="@drawable/ic_person_add" />
 
             <Button
                 android:id="@+id/button10"
@@ -187,34 +186,35 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
-                android:layout_weight="1"
-                android:text="0"
+                android:background="@drawable/ic_0"
                 android:textSize="30sp" />
 
             <Button
                 android:id="@+id/button_text"
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
-                android:layout_weight="1" />
+                android:background="@drawable/ic_textsms" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="370dp"
+            android:layout_height="85dp"
+            android:gravity="center_vertical|center_horizontal|center"
             android:orientation="vertical">
 
             <Button
                 android:id="@+id/button_contacts_list"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
-                android:background="@android:color/transparent"
-                android:text="CONTACTS"
+                android:background="@drawable/ic_perm_contact_calendar"
+                android:scrollHorizontally="true"
+                android:scrollbarAlwaysDrawHorizontalTrack="true"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />
         </LinearLayout>
 
